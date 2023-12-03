@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "Proyek Sain Data"
+  output-file: "quarto-crc"
+  author: "Naufal Abdullah R.Z"
+  date: "12/04/2023"
+
+  chapters:
+    - index.qmd
+    - Dry_Bean_20_096.ipynb
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: krantz
+    keep-tex: true
+    include-in-header: latex/preamble.tex
+    include-before-body: latex/before_body.tex
+    include-after-body: latex/after_body.tex
