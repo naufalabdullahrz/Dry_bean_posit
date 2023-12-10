@@ -262,7 +262,7 @@ To blah, blah, and blah.
 \setlength{\abovedisplayskip}{-5pt}
 \setlength{\abovedisplayshortskip}{-5pt}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, sharp corners, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -392,7 +392,7 @@ Berikut ini adalah penjelasan atribut atribut yang digunakan:
 \end{Shaded}
 
 \begin{verbatim}
-Mounted at /content/drive
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
 \end{verbatim}
 
 \begin{Shaded}
@@ -494,21 +494,21 @@ dtype: int64
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Menghitung jumlah hewan dengan nilai legs tertentu}
-\NormalTok{legs\_counts }\OperatorTok{=}\NormalTok{ y.value\_counts().sort\_index()}
+\CommentTok{\# Menghitung jumlah biji kering dengan nilai biji tertentu}
+\NormalTok{bean\_counts }\OperatorTok{=}\NormalTok{ y.value\_counts().sort\_index()}
 
-\CommentTok{\# Membuat diagram garis untuk distribusi jumlah hewan berdasarkan jumlah kaki (legs)}
+\CommentTok{\# Membuat diagram garis untuk distribusi jumlah biji kering berdasarkan jumlah biji (bean)}
 \NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{))}
-\NormalTok{plt.plot(legs\_counts.index, legs\_counts.values, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}skyblue\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, markersize}\OperatorTok{=}\DecValTok{8}\NormalTok{)}
+\NormalTok{plt.plot(bean\_counts.index, bean\_counts.values, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}skyblue\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, markersize}\OperatorTok{=}\DecValTok{8}\NormalTok{)}
 \NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Jumlah Kategori biji\textquotesingle{}}\NormalTok{)}
 \NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Jumlah biji kering\textquotesingle{}}\NormalTok{)}
 \NormalTok{plt.title(}\StringTok{\textquotesingle{}Distribusi Jumlah biji pada setiap kategori biji\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.xticks(legs\_counts.index)}
+\NormalTok{plt.xticks(bean\_counts.index)}
 \NormalTok{plt.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}\NormalTok{)}
 
-\CommentTok{\# Menambahkan label jumlah hewan pada setiap titik pada diagram}
-\ControlFlowTok{for}\NormalTok{ i, count }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(legs\_counts.values):}
-\NormalTok{    plt.text(legs\_counts.index[i], count, }\BuiltInTok{str}\NormalTok{(count), ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=}\StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Menambahkan label jumlah biji kering pada setiap titik pada diagram}
+\ControlFlowTok{for}\NormalTok{ i, count }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(bean\_counts.values):}
+\NormalTok{    plt.text(bean\_counts.index[i], count, }\BuiltInTok{str}\NormalTok{(count), ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=}\StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{)}
 
 \NormalTok{plt.tight\_layout()}
 \NormalTok{plt.show()}
@@ -603,7 +603,7 @@ akan berpengaruh terhadap dataset
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{X }\OperatorTok{=}\NormalTok{ df.drop([}\StringTok{\textquotesingle{}MinorAxisLength\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}AspectRation\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Solidity\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}roundness\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}ShapeFactor4\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Class\textquotesingle{}}\NormalTok{], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ df.drop([}\StringTok{\textquotesingle{}MinorAxisLength\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}AspectRation\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Solidity\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}roundness\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}ShapeFactor4\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Class\textquotesingle{}}\NormalTok{], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
 \NormalTok{X}
 \end{Highlighting}
 \end{Shaded}
@@ -678,6 +678,37 @@ kemampuan generalisasi dari model yang telah dilatih
 \NormalTok{X\_train, X\_test, y\_train, y\_test }\OperatorTok{=}\NormalTok{ train\_test\_split(X, y, test\_size}\OperatorTok{=}\FloatTok{0.2}\NormalTok{, random\_state}\OperatorTok{=}\DecValTok{42}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X\_train.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(10888, 11)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_train}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+11073    DERMASON
+13172    DERMASON
+11587    DERMASON
+12492    DERMASON
+430         SEKER
+           ...   
+5191         CALI
+13418    DERMASON
+5390         CALI
+860         SEKER
+7270        HOROZ
+Name: Class, Length: 10888, dtype: object
+\end{verbatim}
 
 \hypertarget{normalisasi-data}{%
 \subsection{Normalisasi Data}\label{normalisasi-data}}
@@ -917,8 +948,8 @@ model yang lain.
 \end{Shaded}
 
 \begin{verbatim}
-Akurasi decision_tree: 0.8766066838046273
-Akurasi Random Forest: 0.9074550128534704
+Akurasi decision_tree: 0.8788101358795446
+Akurasi Random Forest: 0.9063532868160118
 Akurasi Regresi Logistik: 0.04296731546088873
 Akurasi neural_network: 0.04296731546088873
 \end{verbatim}
@@ -944,7 +975,7 @@ Akurasi neural_network: 0.04296731546088873
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Dry_Bean_20_096_files/figure-pdf/cell-17-output-1.png}
+{\centering \includegraphics{Dry_Bean_20_096_files/figure-pdf/cell-20-output-1.png}
 
 }
 
